@@ -13,7 +13,10 @@ except ImportError:
     pywinstyles = None
 
 # --- Constants & Paths ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 YT_DLP_PATH = os.path.join(BASE_DIR, "yt-dlp.exe")
 FFMPEG_PATH = os.path.join(BASE_DIR, "ffmpeg.exe")
 CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
